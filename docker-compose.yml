@@ -1,0 +1,19 @@
+services:
+  sleep-service:
+    build: ./services/sleep-service
+    container_name: sleep-service
+    restart: always
+    ports:
+      - "${PORT_SLEEP}:${PORT_SLEEP}"
+    environment:
+      - PORT=${PORT_SLEEP}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
+      - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
+      - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
+    networks:
+      - sleep-mind-net-net
+
+networks:
+  sleep-mind-net:
+    driver: bridge
+
