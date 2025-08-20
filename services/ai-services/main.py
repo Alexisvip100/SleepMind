@@ -5,6 +5,7 @@ from models import SleepInput, SleepQuality
 from utils import hours_between, parse_hhmm_ampm
 import google.generativeai as genai
 import json
+from dotenv import load_dotenv
 
 
 app = FastAPI(
@@ -15,8 +16,9 @@ app = FastAPI(
 app = FastAPI()
 
 
-
+load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+genai.configure(api_key=GOOGLE_API_KEY)
 if not GOOGLE_API_KEY:
     pass
 

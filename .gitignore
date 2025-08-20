@@ -5,6 +5,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Archivos en services
+services/ai-services/__pycache__
+services/ai-services/venv/
 # Archivos de entorno
 .env
 .env.local
