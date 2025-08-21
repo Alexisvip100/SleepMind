@@ -10,10 +10,23 @@ services:
       - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
       - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
       - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
+      - SLEEP_AI_API_URL=${PORT_AI_SLEEP}
+    networks:
+      - sleep-mind-net
+    depends_on:
+      - ai-service 
+
+  ai-service:
+    build: ./services/ai-services
+    container_name: ai-service
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
     networks:
       - sleep-mind-net
 
 networks:
   sleep-mind-net:
     driver: bridge
-

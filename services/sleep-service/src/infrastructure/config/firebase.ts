@@ -1,6 +1,12 @@
 import { EnvType } from "./enviroment";
-import * as admin from 'firebase-admin';
+import admin from 'firebase-admin';
 
-export const firebaseAdmin = (env: EnvType) => admin.initializeApp({
-        credential: admin.credential.cert(env.firebase),
-    });
+
+export const firebaseAdmin = (env: EnvType) => {
+    if(!admin.apps.length){
+        admin.initializeApp({
+            credential: admin.credential.cert(env.firebase),
+        });
+    }
+    return admin;
+}
