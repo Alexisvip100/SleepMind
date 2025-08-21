@@ -26,7 +26,11 @@ export function setupContainer(provider: DependencyContainer = container): void 
 
   // Registrar configuración
   provider.register<EnvType>(ENV, { useValue: env });
-  provider.registerInstance<FirebaseFirestore.Firestore>('FireStore', admin.firestore());
+
+  const adminApp = firebaseAdmin(env);
+  const firestoreInstance = adminApp.firestore();
+
+  provider.registerInstance('Firestore', firestoreInstance);
 
   // Ports
   provider.registerSingleton<ISleepRepository>(SleepRepository, FirestoreSleepRepository);
@@ -38,7 +42,6 @@ export function setupContainer(provider: DependencyContainer = container): void 
   provider.registerSingleton(SleepController);
 }
 
-const admin = firebaseAdmin(env);
 setupContainer();
 
 export { container };

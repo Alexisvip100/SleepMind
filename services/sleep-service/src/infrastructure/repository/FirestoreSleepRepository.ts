@@ -1,12 +1,13 @@
 import { inject, injectable } from "tsyringe";
 import { NewSleepSessionProps, SleepSession } from "../../domain/entities/SleepSession";
 import { ISleepRepository } from "../../domain/ports/ISleepRepository";
+require('firebase-admin');
 
 @injectable()
 export class FirestoreSleepRepository implements ISleepRepository {
     constructor(
         @inject('Firestore') 
-        private readonly db: FirebaseFirestore.Firestore
+        private readonly db: any
     ){}
 
     async registerSession(props: NewSleepSessionProps): Promise<void> {

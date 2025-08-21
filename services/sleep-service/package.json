@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "build": "tsc -p tsconfig.json",
     "start": "node dist/main.js"
+=======
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+>>>>>>> 15224912869b355b98b18628288d49fd5233f3f6
   },
   "keywords": [],
   "author": "",
