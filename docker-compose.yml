@@ -11,7 +11,7 @@ services:
       - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
       - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
     networks:
-      - sleep-mind-net-net
+      - sleep-mind-net
 
 networks:
   sleep-mind-net:
