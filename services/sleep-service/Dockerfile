@@ -50,7 +50,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY package*.json ./
 
 # Puerto configurable desde docker-compose con ARG
-ARG PORT_SLEEP=3000
+ARG PORT_SLEEP=3002
 ENV PORT=${PORT_SLEEP}
 EXPOSE ${PORT}
 

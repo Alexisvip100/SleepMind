@@ -24,8 +24,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Puerto de FastAPI
-ENV PORT_AI=8000
-EXPOSE ${PORT_AI}
+ARG PORT_AI= 8000
+ENV PORT=${PORT_AI}
+EXPOSE ${PORT}
 
 # Comando por defecto (arranca FastAPI con Uvicorn)
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
