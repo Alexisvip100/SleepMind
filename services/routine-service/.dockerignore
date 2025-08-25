@@ -1,0 +1,12 @@
+**/node_modules
+**/.git
+**/.env
+**/Dockerfile
+**/docker-compose*
+**/tests
+**/coverage
+**/logs
+**/*.log
+**/.vscode
+**/dist
+!**/src

@@ -15,7 +15,58 @@ services:
       - sleep-mind-net
     depends_on:
       - ai-service 
-
+  reward-services:
+    build: ./services/reward-service
+    container_name: reward-service
+    restart: always
+    ports:
+      - "${PORT_REWARD}:${PORT_REWARD}"
+    environment:
+      - PORT=${PORT_REWARD}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
+      - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
+      - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
+    networks:
+      - sleep-mind-net
+  auth-services:
+    build: ./services/auth-service
+    container_name: auth-service
+    restart: always
+    ports:
+      - "${PORT_AUTH}:${PORT_AUTH}"
+    environment:
+      - PORT=${PORT_AUTH}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
+      - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
+      - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
+    networks:
+      - sleep-mind-net
+  routine-services:
+    build: ./services/routine-service
+    container_name: routine-service
+    restart: always
+    ports:
+      - "${PORT_ROUTINE}:${PORT_ROUTINE}" 
+    environment:
+      - PORT=${PORT_ROUTINE}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
+      - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
+      - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
+    networks:
+      - sleep-mind-net
+  audio-services:
+    build: ./services/audio-service
+    container_name: audio-service
+    restart: always
+    ports:
+      - "${PORT_AUDIO}:${PORT_AUDIO}" 
+    environment:
+      - PORT=${PORT_AUDIO}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
+      - FIREBASE_CLIENT_EMAIL=${FIREBASE_CLIENT_EMAIL}
+      - FIREBASE_PRIVATE_KEY=${FIREBASE_PRIVATE_KEY}
+    networks:
+      - sleep-mind-net
   ai-service:
     build: ./services/ai-services
     container_name: ai-service

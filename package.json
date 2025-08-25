@@ -17,7 +17,8 @@
     "express": "^5.1.0",
     "reflect-metadata": "^0.2.2",
     "routes": "^2.1.0",
-    "tsyringe": "^4.10.0"
+    "tsyringe": "^4.10.0",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
